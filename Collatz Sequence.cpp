@@ -2,6 +2,13 @@
 
 using namespace std;
 
+
+//Which starting number, under one million, produces the longest chain?
+
+//Consider the following operation on an arbitrary positive integer: 
+//    If the number is even, divide it by two.
+//    If the number is odd, triple it and add one.
+
 // function
 int CollatzSequence(uint64_t num){
     int count = 0;
