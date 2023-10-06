@@ -4,6 +4,8 @@
 using namespace std;
 
 int divCount(int n){
+
+    //What is the value of the first triangle number to have over five hundred divisors?
     // function for finding no. of divisors
 
     // sieve method for prime calculation
