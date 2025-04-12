@@ -1,9 +1,15 @@
 #include <iostream>
 #include <vector>
+#include <cstdint>
+#include <numeric>
+#include <chrono>
 using namespace std;
 
-int num = 0;
-int counter = 0;
+#define R 21
+#define C 21
+
+u_int num = 0;
+u_int counter = 0;
 
 // Check if (i, j) is valid matrix coordinate
 bool isValid(int i, int j, int M, int N)
@@ -44,8 +50,6 @@ void findPath(vector<vector<int>> const &mat, vector<int> &path, int i, int j)
         if (num < counter){
             num = counter;
         }
-
-        //printPath(path, mat[i][j]);
         return;
     }
 
@@ -68,6 +72,17 @@ void findPath(vector<vector<int>> const &mat, vector<int> &path, int i, int j)
     path.pop_back();
 }
 
+// function for printing vector of vectors
+auto print_vector(vector<vector<int>> vec){
+    for(int i = 0; i < vec.size(); i++){
+        cout << endl;
+        for(int j = 0; j < vec[i].size(); j++){
+            cout << vec[i][j];
+        }
+    }
+}
+
+
 int main()
 {
     vector<vector<int>> mat =
@@ -76,13 +91,29 @@ int main()
             {4, 5, 6},
             {7, 8, 9}};
 
-    int x = 0, y = 0;
 
+
+    int x = 0, y = 0;
     vector<int> path;
 
-    findPath(mat, path, x, y);
+
+    // initialize a vector  of vectors
+    vector<vector<int>> testvec(R, vector<int>(C));
+
+    // print vector of vectors
+    //print_vector(testvec);
+
+    auto start = chrono::system_clock::now();
+    
+    findPath(testvec, path, x, y);
+
+    auto end = chrono::system_clock::now();
+
+    cout << endl;
 
     cout << num << endl;
+
+    cout << chrono::duration_cast<chrono::milliseconds>(end - start).count() << "ms" << endl;
 
     return 0;
 }

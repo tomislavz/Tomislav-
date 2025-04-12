@@ -10,7 +10,7 @@ using namespace std;
 //    If the number is odd, triple it and add one.
 
 // function
-int CollatzSequence(uint64_t num){
+int CollatzSequence(int num){
     int count = 0;
     while (num > 1)
     {
